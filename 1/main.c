@@ -3,7 +3,12 @@
 
 unsigned sumOfNaturalMultiples(unsigned multiple, unsigned limit)
 {
-  unsigned n = floor(limit / multiple);
+  unsigned n = floor(limit / multiple); // calculate number of terms between 0 and limit which are multiples of multiple
+
+  // calculate the sum of multiples up to limit
+  // using Gauss' sum of an arithmetic series formula
+  // we multiply by multiple because the difference between each term is multiple so for every term we want to add the next multiple
+  // instead of just the sum of 1, 2, 3...n we will calculate the sum of 1 * multiple, 2 * multiple, 3 * multiple...n * multiple
   return multiple * (n * (n + 1) / 2);
 }
 
@@ -16,7 +21,7 @@ int gcd(int a, int b)
 
 int main()
 {
-  unsigned limit = 999;
+  unsigned limit = 99;
   unsigned m1 = 3;
   unsigned m2 = 5;
   unsigned total = 0;
@@ -30,6 +35,7 @@ int main()
 
   printf("brute force: %u ", total);
 
+  // inclusion exclusion method
   total = 0;
   total += sumOfNaturalMultiples(m1, limit);
   total += sumOfNaturalMultiples(m2, limit);
